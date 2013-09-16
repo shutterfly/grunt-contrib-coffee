@@ -53,6 +53,7 @@ Compile JavaScript and create a .map file linking it to the CoffeeScript source.
 
 #### amdDefineWrap
 Type: `string`
+Default: undefined
 
 Use this option to wrap joined CoffeeScript in define function so that a CommonJS module can be optimized for web. If a module name is specified join will be defaulted to true.
 
