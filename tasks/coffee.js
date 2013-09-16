@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       separator: grunt.util.linefeed
     });
     
-    if(options.amdDefineWrap) {
+    if(options.amdDefineWrapModule) {
       options.bare = true;
     }
     
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         writeFileAndMap(paths, compileWithMaps(validFiles, options, paths));
-      } else if (options.join === true || options.amdDefineWrap) {
+      } else if (options.join === true || options.amdDefineWrapModule) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
         writeFile(f.dest, concatOutput(validFiles, options));
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
   };
 
   var createOptionsForJoin = function (files, paths, options) {
-    var code = concatFiles(files, options.separator, options.amdDefineWrap);
+    var code = concatFiles(files, options.separator, options.amdDefineWrapModule);
     var targetFileName = paths.destName + '.src.coffee';
     grunt.file.write(paths.destDir + targetFileName, code);
 
@@ -125,12 +125,12 @@ module.exports = function(grunt) {
     };
   };
 
-  var concatFiles = function (files, separator, amdDefineWrap) {
+  var concatFiles = function (files, separator, amdDefineWrapModule) {
     var fileContent = files.map(function (filePath) {
       return grunt.file.read(filePath);
     }).join(grunt.util.normalizelf(separator));
-    if(amdDefineWrap) {
-      return 'define "'+amdDefineWrap+'", (require, exports, module) ->' +
+    if(amdDefineWrapModule) {
+      return 'define "'+amdDefineWrapModule+'", (require, exports, module) ->' +
              separator +
              indentFileContent(fileContent, separator);
     }
@@ -161,7 +161,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var code = concatFiles(files, options.separator, options.amdDefineWrap);
+    var code = concatFiles(files, options.separator, options.amdDefineWrapModule);
     return compileCoffee(code, options);
   };
 
