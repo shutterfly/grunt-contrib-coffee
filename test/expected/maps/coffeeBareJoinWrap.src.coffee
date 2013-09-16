@@ -1,4 +1,4 @@
-define (require, exports, module) ->
+define "myModule", (require, exports, module) ->
   class HelloWorld
     @test: 'test'
   console.log('hi')

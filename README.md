@@ -52,11 +52,9 @@ Default: `false`
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
 
 #### amdDefineWrap
-Type: `boolean`
-Default: `false`
+Type: `string`
 
-Add a CommonJS-style AMD define wrapper to joined .js file. This will force the 'bare' and 'join' options to behave as true.
-The wrapper uses two spaces for indentation.
+Use this option to wrap joined CoffeeScript in define function so that a CommonJS module can be optimized for web. If a module name is specified join will be defaulted to true.
 
 ### Usage Examples
 
@@ -137,4 +135,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Mon Sep 16 2013 06:35:50.*
+*This file was generated on Mon Sep 16 2013 11:06:22.*

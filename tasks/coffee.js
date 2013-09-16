@@ -18,11 +18,10 @@ module.exports = function(grunt) {
       bare: false,
       join: false,
       sourceMap: false,
-      amdDefineWrap: false,
       separator: grunt.util.linefeed
     });
     
-    if(options.amdDefineWrap === true) {
+    if(options.amdDefineWrap) {
       options.bare = true;
     }
     
@@ -131,7 +130,7 @@ module.exports = function(grunt) {
       return grunt.file.read(filePath);
     }).join(grunt.util.normalizelf(separator));
     if(amdDefineWrap) {
-      return 'define (require, exports, module) ->' +
+      return 'define "'+amdDefineWrap+'", (require, exports, module) ->' +
              separator +
              indentFileContent(fileContent, separator);
     }

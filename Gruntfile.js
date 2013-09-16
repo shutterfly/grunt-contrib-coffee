@@ -81,7 +81,7 @@ module.exports = function(grunt) {
       },
       compileBareJoinedWrapped: {
         options: {
-          amdDefineWrap: true
+          amdDefineWrap: "myModule"
         },
         files: {
           'tmp/join/bareCoffeeWrap.js': ['test/fixtures/coffee1.coffee'],
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       compileBareJoinedWrappedMap: {
         options: {
           sourceMap: true,
-          amdDefineWrap: true
+          amdDefineWrap: "myModule"
         },
         files: {
           'tmp/join/bareWrapMap.js': ['test/fixtures/coffee1.coffee'],
