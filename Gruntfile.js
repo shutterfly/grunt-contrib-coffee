@@ -88,6 +88,16 @@ module.exports = function(grunt) {
           'tmp/join/bareJoinWrap.js': uniformConcatFixtures
         }
       },
+      compileBareJoinedWrappedMap: {
+        options: {
+          sourceMap: true,
+          amdDefineWrap: true
+        },
+        files: {
+          'tmp/join/bareWrapMap.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/join/bareJoinWrapMap.js': uniformConcatFixtures
+        }
+      },
       compileMaps: {
         options: {
           sourceMap: true

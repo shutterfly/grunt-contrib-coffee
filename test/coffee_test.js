@@ -118,6 +118,23 @@ exports.coffee = {
     
     test.done();
   },
+  compileBareJoinedWrappedMap: function(test) {
+    'use strict';
+
+    test.expect(2);
+    
+    assertFileEquality(test,
+      'tmp/join/bareWrapMap.js.map',
+      'test/expected/maps/bareCoffeeWrap.js.map',
+      'Compilation of single file with source maps, wrap should generate map');
+    
+    assertFileEquality(test,
+      'tmp/join/bareJoinWrapMap.js.map',
+      'test/expected/maps/bareJoinWrap.js.map',
+      'Compilation of multiple files with source maps, wrap should generate map');
+    
+    test.done();
+  },
   compileMaps: function(test) {
     'use strict';
 
