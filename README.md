@@ -51,7 +51,7 @@ Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
 
-###### amdDefineWrapModule
+#### amdDefineWrapModule
 Type: `string`
 Default: undefinded
 
@@ -140,4 +140,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Tue Sep 17 2013 09:13:01.*
+*This file was generated on Tue Sep 17 2013 09:22:27.*
