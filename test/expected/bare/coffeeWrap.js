@@ -1,4 +1,4 @@
-define("myModule", function(require, exports, module) {
+define(function(require, exports, module) {
   var HelloWorld;
   HelloWorld = (function() {
     function HelloWorld() {}

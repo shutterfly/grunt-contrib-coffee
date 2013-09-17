@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       separator: grunt.util.linefeed
     });
     
-    if(options.amdDefineWrapModule) {
+    if(options.amdDefineWrap) {
       options.bare = true;
     }
     
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         writeFileAndMap(paths, compileWithMaps(validFiles, options, paths));
-      } else if (options.join === true || options.amdDefineWrapModule) {
+      } else if (options.join === true || options.amdDefineWrap) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
         writeFile(f.dest, concatOutput(validFiles, options));
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
   };
 
   var createOptionsForJoin = function (files, paths, options) {
-    var code = concatFiles(files, options.separator, options.amdDefineWrapModule);
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     var targetFileName = paths.destName + '.src.coffee';
     grunt.file.write(paths.destDir + targetFileName, code);
 
@@ -125,13 +125,12 @@ module.exports = function(grunt) {
     };
   };
 
-  var concatFiles = function (files, separator, amdDefineWrapModule) {
+  var concatFiles = function (files, separator, amdDefineWrap) {
     var fileContent = files.map(function (filePath) {
       return grunt.file.read(filePath);
     }).join(grunt.util.normalizelf(separator));
-    if(amdDefineWrapModule) {
-
-      fileContent =  'define "'+amdDefineWrapModule+'", (require, exports, module) ->' +
+    if(amdDefineWrap) {
+      fileContent =  'define (require, exports, module) ->' +
              separator +
              indentFileContent(fileContent, separator);
       fileContent += separator + "  return exports";
@@ -163,7 +162,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var code = concatFiles(files, options.separator, options.amdDefineWrapModule);
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     return compileCoffee(code, options);
   };
 
