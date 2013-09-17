@@ -23,7 +23,7 @@ Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
 
--#### amdDefineWrapModule
+#### amdDefineWrapModule
 Type: `string`
 Default: undefinded
 
