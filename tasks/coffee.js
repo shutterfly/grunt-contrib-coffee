@@ -130,9 +130,11 @@ module.exports = function(grunt) {
       return grunt.file.read(filePath);
     }).join(grunt.util.normalizelf(separator));
     if(amdDefineWrapModule) {
-      return 'define "'+amdDefineWrapModule+'", (require, exports, module) ->' +
+
+      fileContent =  'define "'+amdDefineWrapModule+'", (require, exports, module) ->' +
              separator +
              indentFileContent(fileContent, separator);
+      fileContent += separator + "  return exports";
     }
     return fileContent;
   };

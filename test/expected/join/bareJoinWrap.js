@@ -8,5 +8,6 @@ define("myModule", function(require, exports, module) {
     return HelloWorld;
 
   })();
-  return console.log('hi');
+  console.log('hi');
+  return exports;
 });

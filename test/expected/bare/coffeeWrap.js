@@ -1,6 +1,6 @@
 define("myModule", function(require, exports, module) {
   var HelloWorld;
-  return HelloWorld = (function() {
+  HelloWorld = (function() {
     function HelloWorld() {}
 
     HelloWorld.test = 'test';
@@ -8,4 +8,5 @@ define("myModule", function(require, exports, module) {
     return HelloWorld;
 
   })();
+  return exports;
 });
